@@ -22,7 +22,7 @@ function Navbar() {
   }, [pathname]);
 
   return (
-    <div className="bg-neutral-100 px-8 py-4 flex justify-between items-center">
+    <div className="fixed top-0 w-full backdrop-blur-md bg-neutral-100/50 px-8 py-4 flex justify-between items-center">
       <Link href="/">
         <div className="flex items-center gap-x-2">
           <Calendar className="h-6 w-6 text-blue-600" />

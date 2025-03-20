@@ -2,7 +2,7 @@ import { Clock, Calendar } from "lucide-react";
 
 function Hero() {
   return (
-    <div className="border border-blue-500 py-[4.5rem]">
+    <div className="py-[4.5rem] mt-16">
       <div className="w-[50%] mx-auto">
         <div className="bg-indigo-400/30 flex items-center gap-x-1.5 w-fit py-1 px-2 mx-auto rounded-2xl">
           <Clock className="w-4 h-4 text-indigo-500" />
