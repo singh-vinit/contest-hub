@@ -1,7 +1,6 @@
 import { Calendar, Clock, Timer } from "lucide-react";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { formatter, timeLeft } from "@/lib/helper";
-import Link from "next/link";
 
 const cardColor: { [key: string]: string } = {
   "atcoder.jp": "border-l-stone-600",

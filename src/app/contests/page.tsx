@@ -1,5 +1,5 @@
-import ContestCard from "@/components/ContestCard";
 import { contestTypes } from "@/lib/types";
+import ContestSection from "@/components/ContestSection";
 
 const platforms = [
   "codeforces.com",
@@ -22,25 +22,14 @@ export default async function Contests() {
 
   const data = await res.json();
   const contests: contestTypes[] = data.objects;
+  const includedContests = contests.filter((contest) =>
+    platforms.includes(contest.host)
+  );
 
   return (
     <div className="">
       <div className="p-6 mt-16">
-        <div className="grid grid-cols-3 gap-y-10 w-[98%] mx-auto">
-          {contests
-            .filter((contest) => platforms.includes(contest.host))
-            .map((contest) => (
-              <ContestCard
-                key={contest.id}
-                duration={contest.duration}
-                start={contest.start}
-                end={contest.end}
-                event={contest.event}
-                host={contest.host}
-                link={contest.href}
-              />
-            ))}
-        </div>
+        <ContestSection contests={includedContests} />
       </div>
     </div>
   );
