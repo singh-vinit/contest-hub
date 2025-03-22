@@ -1,43 +1,72 @@
 import { Calendar, Clock, Timer } from "lucide-react";
 import { SquareArrowOutUpRight } from "lucide-react";
+import { formatter, timeLeft } from "@/lib/helper";
+import Link from "next/link";
 
-const cardColor = {
-  "atcoder.jp": "stone-600",
-  "leetcode.com": "yellow-600",
-  "codeforces.com": "blue-600",
-  "hackerrank.com": "green-600",
-  "topcoder.com": "blue-600",
-  "codechef.com": "red-600",
+const cardColor: { [key: string]: string } = {
+  "atcoder.jp": "border-l-stone-600",
+  "leetcode.com": "border-l-yellow-500",
+  "codeforces.com": "border-l-blue-600",
+  "hackerrank.com": "border-l-green-600",
+  "topcoder.com": "border-l-blue-600",
+  "codechef.com": "border-l-red-600",
 };
 
-function ContestCard() {
+const platforms = [
+  "codeforces.com",
+  "atcoder.jp",
+  "codechef.com",
+  "hackerrank.com",
+  "leetcode.com",
+  "topcoder.com",
+];
+
+interface ContestCardProps {
+  duration: number;
+  start: string;
+  end: string;
+  event: string;
+  host: string;
+  link: string;
+}
+
+function ContestCard({
+  duration,
+  start,
+  end,
+  event,
+  host,
+  link,
+}: ContestCardProps) {
+  let { startDate, startTime, durationString } = formatter(start, duration);
+  let { timeLeftString, status } = timeLeft(start, duration);
+
   return (
     <div
-      className={`w-[340px] p-4 border border-l-8 border-l-${cardColor["codechef.com"]} rounded-xl shadow-sm`}
+      className={`
+        w-[340px] p-4 border border-l-8 rounded-xl shadow-sm ${cardColor[host]}`}
     >
       <div className="flex justify-between">
         <span className="bg-neutral-200 px-2 py-1 rounded-xl text-sm font-medium ">
-          Atcoder
+          {host.slice(0, host.indexOf("."))}
         </span>
         <span className="bg-neutral-200 px-2 py-1 rounded-xl text-sm font-medium ">
-          ongoing
+          {status}
         </span>
       </div>
-      <p className="text-lg font-medium text-black text-left pt-2">
-        At coder regular contest 123
-      </p>
+      <p className="text-lg font-medium text-black text-left pt-2">{event}</p>
       <div className="py-4 text-sm text-gray-500 flex flex-col gap-y-1">
         <p className="flex gap-x-2 items-center">
           <Calendar className="w-4 h-4" />
-          <span>date</span>
+          <span>{startDate}</span>
         </p>
         <p className="flex gap-x-2 items-center">
           <Clock className="w-4 h-4" />
-          <span>time</span>
+          <span>{startTime}</span>
         </p>
         <p className="flex gap-x-2 items-center">
           <Timer className="w-4 h-4" />
-          <span>duration</span>
+          <span>{durationString}</span>
         </p>
       </div>
       <p className="flex gap-x-4 items-center">
@@ -50,9 +79,11 @@ function ContestCard() {
       </p>
       <div className="flex justify-between items-center pt-4">
         <span className="text-gray-700 text-sm font-medium">
-          starts in 2h30m
+          {timeLeftString}
         </span>
-        <SquareArrowOutUpRight className="w-4 h-4" />
+        <a href={link} target="_blank" rel="noreferrer">
+          <SquareArrowOutUpRight className="w-4 h-4" />
+        </a>
       </div>
     </div>
   );
