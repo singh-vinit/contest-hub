@@ -23,7 +23,7 @@ const features = [
 
 function Features() {
   return (
-    <div className="py-12">
+    <div className="py-16">
       <h1 className="font-bold text-3xl text-gray-700 text-center capitalize">
         Why Use CodeContestHub
       </h1>

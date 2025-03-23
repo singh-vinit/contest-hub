@@ -23,7 +23,7 @@ function ContestSection({ contests }: props) {
         selectedPlatform={selectedPlatform}
         setSelectedPlatform={setSelectedPlatform}
       />
-      <div className="grid grid-cols-3 gap-y-10 w-[98%] mx-auto">
+      <div className="grid grid-cols-3 gap-y-10 w-[98%] mx-auto mb-8">
         {filteredContests.map((contest) => (
           <ContestCard
             key={contest.id}
