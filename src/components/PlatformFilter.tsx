@@ -4,11 +4,11 @@ import { Funnel } from "lucide-react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const platforms = [
-  { name: "atcoder", color: "bg-stone-500" },
-  { name: "codeforces", color: "bg-blue-500" },
-  { name: "leetcode", color: "bg-yellow-500" },
-  { name: "codechef", color: "bg-red-500" },
-  { name: "all", color: "bg-green-500" },
+  { name: "atcoder", color: "bg-green-200" },
+  { name: "codeforces", color: "bg-blue-200" },
+  { name: "leetcode", color: "bg-yellow-200" },
+  { name: "codechef", color: "bg-red-200" },
+  { name: "all", color: "bg-purple-200" },
 ];
 
 function PlatformFilter({ selectedPlatform, setSelectedPlatform }: any) {
@@ -40,7 +40,7 @@ function PlatformFilter({ selectedPlatform, setSelectedPlatform }: any) {
         )}
       </button>
       {isOpen && (
-        <div className="absolute top-12 left-0 z-10 p-2 rounded-md shadow-md border-b-2 bg-neutral-100 w-[200px] divide-y divide-black/50">
+        <div className="absolute top-12 left-0 z-10 p-2 rounded-md shadow-md border-b-2 bg-neutral-50 w-[200px] divide-y divide-black/50">
           {platforms.map((platform, ind) => (
             <button
               key={ind}

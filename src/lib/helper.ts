@@ -11,7 +11,8 @@ export function timeLeft(start: string, duration: number) {
     let minutes: number = Math.floor(
       (timeDiff % (1000 * 60 * 60)) / (1000 * 60)
     );
-    let timeLeft = `starts in ${days}d ${hours}h ${minutes}m`;
+    let seconds: number = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    let timeLeft = `starts in ${days}d ${hours}h ${minutes}m ${seconds}s`;
     return { timeLeftString: timeLeft, status: "Upcoming" };
   } else if (timeDiff < 0 && Math.abs(timeDiff) < duration * 1000) {
     return { timeLeftString: "Ongoing", status: "Ongoing" };

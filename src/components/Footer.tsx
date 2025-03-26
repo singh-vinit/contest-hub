@@ -25,10 +25,16 @@ function Footer() {
           <div>
             <h1 className="font-semibold text-lg text-black">Resources</h1>
             <div className="flex flex-col gap-y-1">
-              <Link href="/contest" className="text-neutral-500/75">
+              <Link
+                href="/contest"
+                className="text-neutral-500/75 hover:text-black"
+              >
                 Contests
               </Link>
-              <Link href="/about" className="text-neutral-500/75">
+              <Link
+                href="/about"
+                className="text-neutral-500/75 hover:text-black"
+              >
                 About
               </Link>
             </div>
@@ -40,28 +46,28 @@ function Footer() {
               <a
                 href="https://www.leetcode.com"
                 target="_blank"
-                className="text-neutral-500/75"
+                className="text-neutral-500/75 hover:text-black"
               >
                 Leetcode
               </a>
               <a
                 href="https://www.codeforces.com"
                 target="_blank"
-                className="text-neutral-500/75"
+                className="text-neutral-500/75 hover:text-black"
               >
                 Codeforces
               </a>
               <a
                 href="https://www.atcoder.in"
                 target="_blank"
-                className="text-neutral-500/75"
+                className="text-neutral-500/75 hover:text-black"
               >
                 AtCoder
               </a>
               <a
                 href="https://www.codechef.com"
                 target="_blank"
-                className="text-neutral-500/75"
+                className="text-neutral-500/75 hover:text-black"
               >
                 codechef
               </a>
@@ -73,12 +79,12 @@ function Footer() {
             <div className="flex gap-x-4 items-center">
               <a href="" target="_blank">
                 <svg
-                  className="w-6 h-6 text-neutral-500/75"
+                  className="w-6 h-6 text-neutral-500/75 hover:text-black"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -104,7 +110,7 @@ function Footer() {
               </a>
               <a href="" target="_blank">
                 <svg
-                  className="w-6 h-6 text-neutral-500/75"
+                  className="w-6 h-6 text-neutral-500/75 hover:text-black"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
