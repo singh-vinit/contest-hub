@@ -4,10 +4,31 @@ import { Bell, MoveRight } from "lucide-react";
 
 function Notification() {
   const [userEmail, setUserEmail] = useState("");
-  function handleBtnClick() {
-    console.log(userEmail);
-    setUserEmail("");
-    alert("Thank you for subscribing! We will notify you about upcoming contests and opportunities.");
+  const [isLoading, setIsLoading] = useState(false);
+  async function handleBtnClick() {
+    setIsLoading(true);
+    if (!userEmail || !userEmail.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    const res = await fetch("/api/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: userEmail }),
+    });
+    if (res.status === 200) {
+      alert("Thank you for subscribing! We will notify you about upcoming contests and opportunities.");
+      setUserEmail("");
+      setIsLoading(false);
+    } else if (res.status === 409) {
+      alert("This email is already registered. Please use a different email.");
+      setIsLoading(false);
+    } else {
+      alert("Something went wrong. Please try again later.");
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -33,7 +54,8 @@ function Notification() {
           />
           <button
             onClick={handleBtnClick}
-            className="bg-purple-500 p-2 rounded-lg"
+            className="bg-purple-500 p-2 rounded-lg hover:bg-purple-400 transition duration-200 ease-in-out"
+            disabled={isLoading}
           >
             <MoveRight className="w-8 h-8 text-white" />
           </button>
