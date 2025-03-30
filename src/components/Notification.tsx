@@ -6,11 +6,11 @@ function Notification() {
   const [userEmail, setUserEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   async function handleBtnClick() {
-    setIsLoading(true);
     if (!userEmail || !userEmail.includes("@")) {
       alert("Please enter a valid email address.");
       return;
     }
+    setIsLoading(true);
     const res = await fetch("/api/emails", {
       method: "POST",
       headers: {
@@ -19,14 +19,18 @@ function Notification() {
       body: JSON.stringify({ email: userEmail }),
     });
     if (res.status === 200) {
-      alert("Thank you for subscribing! We will notify you about upcoming contests and opportunities.");
+      alert(
+        "Thank you for subscribing! We will notify you about upcoming contests and opportunities."
+      );
       setUserEmail("");
       setIsLoading(false);
     } else if (res.status === 409) {
       alert("This email is already registered. Please use a different email.");
+      setUserEmail("");
       setIsLoading(false);
     } else {
       alert("Something went wrong. Please try again later.");
+      setUserEmail("");
       setIsLoading(false);
     }
   }
@@ -57,7 +61,13 @@ function Notification() {
             className="bg-purple-500 p-2 rounded-lg hover:bg-purple-400 transition duration-200 ease-in-out"
             disabled={isLoading}
           >
-            <MoveRight className="w-8 h-8 text-white" />
+            {isLoading ? (
+              <div className="w-8 h-8 text-xl text-white animate-bounce">
+                ...
+              </div>
+            ) : (
+              <MoveRight className="w-8 h-8 text-white" />
+            )}
           </button>
         </div>
         <p className="text-center text-neutral-500">
