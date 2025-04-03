@@ -62,10 +62,14 @@ function ContestCard({
   let { timeLeftString, status } = timeLeft(start, duration);
 
   const [timeLeftState, setTimeLeftState] = useState(timeLeftString);
+  const [timeStatus, setTimeStatus] = useState(status);
+
   useEffect(() => {
+    if (status === "Ended") return;
     const interval = setInterval(() => {
       const { timeLeftString, status } = timeLeft(start, duration);
       setTimeLeftState(timeLeftString);
+      setTimeStatus(status);
     }, 1000);
     //cleanup interval on component unmount
     return () => clearInterval(interval);
@@ -83,7 +87,9 @@ function ContestCard({
           {host.slice(0, host.indexOf("."))}
         </span>
         <div className="text-sm font-medium flex items-center gap-x-2">
-          <div className={`w-[10px] h-[10px] rounded-full ${statusColor[status]}`}></div>
+          <div
+            className={`w-[10px] h-[10px] rounded-full ${statusColor[status]}`}
+          ></div>
           <span>{status}</span>
         </div>
       </div>
@@ -107,7 +113,9 @@ function ContestCard({
           <span className="text-gray-700 text-sm font-medium">
             {timeLeftState}
           </span>
-          <Hourglass className={`w-4 h-4 animate-spin ${txtColor[host]}`} />
+          {status != "Ended" && (
+            <Hourglass className={`w-4 h-4 animate-spin ${txtColor[host]}`} />
+          )}
         </div>
         <a href={link} target="_blank" rel="noreferrer">
           <SquareArrowOutUpRight className="w-4 h-4" />
