@@ -1,5 +1,7 @@
 # CodeContest Hub
 
+## Still in progress ⭐
+
 ## Overview
 
 CodeContest Hub is a centralized platform that aggregates competitive programming contests from various platforms, allowing users to:

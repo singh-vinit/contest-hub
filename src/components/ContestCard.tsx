@@ -32,15 +32,6 @@ const statusColor: { [key: string]: string } = {
   Ended: "bg-red-500",
 };
 
-const platforms = [
-  "codeforces.com",
-  "atcoder.jp",
-  "codechef.com",
-  "hackerrank.com",
-  "leetcode.com",
-  "topcoder.com",
-];
-
 interface ContestCardProps {
   duration: number;
   start: string;
@@ -50,16 +41,9 @@ interface ContestCardProps {
   link: string;
 }
 
-function ContestCard({
-  duration,
-  start,
-  end,
-  event,
-  host,
-  link,
-}: ContestCardProps) {
-  let { startDate, startTime, durationString } = formatter(start, duration);
-  let { timeLeftString, status } = timeLeft(start, duration);
+function ContestCard({ duration, start, event, host, link }: ContestCardProps) {
+  const { startDate, startTime, durationString } = formatter(start, duration);
+  const { timeLeftString, status } = timeLeft(start, duration);
 
   const [timeLeftState, setTimeLeftState] = useState(timeLeftString);
   const [timeStatus, setTimeStatus] = useState(status);
@@ -73,7 +57,7 @@ function ContestCard({
     }, 1000);
     //cleanup interval on component unmount
     return () => clearInterval(interval);
-  }, [setTimeLeftState]);
+  }, [setTimeLeftState, duration, start, status]);
 
   return (
     <div
@@ -88,9 +72,9 @@ function ContestCard({
         </span>
         <div className="text-sm font-medium flex items-center gap-x-2">
           <div
-            className={`w-[10px] h-[10px] rounded-full ${statusColor[status]}`}
+            className={`w-[10px] h-[10px] rounded-full ${statusColor[timeStatus]}`}
           ></div>
-          <span>{status}</span>
+          <span>{timeStatus}</span>
         </div>
       </div>
       <p className="text-lg font-medium text-black text-left pt-2">{event}</p>

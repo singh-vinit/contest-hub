@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { House, Calendar, CircleAlert, Menu, X } from "lucide-react";
+import { House, Calendar, CircleAlert } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

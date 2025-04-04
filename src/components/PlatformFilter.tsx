@@ -11,7 +11,12 @@ const platforms = [
   { name: "all", color: "bg-purple-200" },
 ];
 
-function PlatformFilter({ selectedPlatform, setSelectedPlatform }: any) {
+interface Props {
+  selectedPlatform: string;
+  setSelectedPlatform: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function PlatformFilter({ selectedPlatform, setSelectedPlatform }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleSelect(value: string) {
