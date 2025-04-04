@@ -3,21 +3,22 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 function Switch() {
-  const [isSelected, setIsSelected] = useState<"upcoming" | "ended">(
-    "upcoming"
-  );
+  const pathname = usePathname();
+
+  const [isSelected, setIsSelected] = useState(pathname);
   const router = useRouter();
 
   function handleEnded() {
-    router.push("/contests?upcoming=false");
-    setIsSelected("ended");
+    router.push("/contests/past");
+    setIsSelected("/contests/past");
   }
 
   function handleUpcoming() {
-    router.push("/contests?upcoming=true");
-    setIsSelected("upcoming");
+    router.push("/contests/upcoming");
+    setIsSelected("/contests/upcoming");
   }
 
   return (
@@ -27,14 +28,14 @@ function Switch() {
         initial={false}
         animate={{
           width: "50%",
-          x: isSelected === "upcoming" ? "100%" : 0,
+          x: isSelected === "/contests/upcoming" ? "100%" : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       ></motion.div>
       <button
         className={cn(
           "relative text-sm rounded-full w-[50%] h-full py-2 font-medium text-gray-600 cursor-pointer",
-          isSelected === "ended" ? "text-white" : "text-gray-600"
+          isSelected === "/contests/past" ? "text-white" : "text-gray-600"
         )}
         onClick={handleEnded}
       >
@@ -43,7 +44,7 @@ function Switch() {
       <button
         className={cn(
           "relative text-sm rounded-full w-[50%] h-full py-2 font-medium text-gray-600 cursor-pointer",
-          isSelected === "upcoming" ? "text-white" : "text-gray-600"
+          isSelected === "/contests/upcoming" ? "text-white" : "text-gray-600"
         )}
         onClick={handleUpcoming}
       >

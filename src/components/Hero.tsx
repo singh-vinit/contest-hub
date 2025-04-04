@@ -1,4 +1,5 @@
 import { Clock, Calendar } from "lucide-react";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -23,13 +24,19 @@ function Hero() {
           AtCoder and more. Stay updated with upcoming challenges.
         </p>
         <div className="flex items-center gap-x-4 justify-center py-6">
-          <button className="flex items-center gap-x-2 capitalize bg-indigo-500 text-lg text-white py-2 px-4 rounded-lg hover:bg-indigo-700 hover:shadow-2xl transition-all duration-200 ease-in">
+          <Link
+            href="/contests/upcoming"
+            className="flex items-center gap-x-2 capitalize bg-indigo-500 text-lg text-white py-2 px-4 rounded-lg hover:bg-indigo-700 hover:shadow-2xl transition-all duration-200 ease-in"
+          >
             <Calendar className="w-4 h-4" />
             <span>view all contests</span>
-          </button>
-          <button className="flex items-center gap-x-2 capitalize bg-neutral-200 text-lg text-black py-2 px-4 rounded-lg hover:bg-neutral-400 hover:shadow-2xl transition-all duration-200 ease-in">
+          </Link>
+          <Link
+            href="/about"
+            className="flex items-center gap-x-2 capitalize bg-neutral-200 text-lg text-black py-2 px-4 rounded-lg hover:bg-neutral-400 hover:shadow-2xl transition-all duration-200 ease-in"
+          >
             learn more
-          </button>
+          </Link>
         </div>
       </div>
     </div>

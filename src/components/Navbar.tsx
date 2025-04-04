@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 
 const navLinks = [
   { label: "Home", icon: House, href: "/" },
-  { label: "Contests", icon: Calendar, href: "/contests" },
+  { label: "Contests", icon: Calendar, href: "/contests/upcoming" },
   { label: "About", icon: CircleAlert, href: "/about" },
 ];
 

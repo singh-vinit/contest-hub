@@ -9,20 +9,15 @@ const platforms = [
   "leetcode.com",
 ];
 
-export default async function Contests({ searchParams }: { searchParams: { upcoming: string } }) {
-  const params = searchParams;
-
-  const res = await fetch(
-    `https://clist.by/api/v4/contest/?upcoming=${params.upcoming}`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `ApiKey vinit_4:${process.env.NEXT_PUBLIC_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      cache: "no-store", //avoid caching for fresh data
-    }
-  );
+export default async function Upcoming() {
+  const res = await fetch(`https://clist.by/api/v4/contest/?upcoming=true`, {
+    method: "GET",
+    headers: {
+      Authorization: `ApiKey vinit_4:${process.env.NEXT_PUBLIC_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    cache: "no-store", //avoid caching for fresh data
+  });
 
   const data = await res.json();
   const contests: contestTypes[] = data.objects;

@@ -18,7 +18,7 @@ CodeContest Hub is a centralized platform that aggregates competitive programmin
 
 ## Tech Stack
 
-- **Frontend:** Next.js, TypeScript
+- **Frontend:** Next.js, TypeScript, Framer Motion
 - **Backend:** Drizzle ORM, Nodemailer
 - **Database:** Neon DB Postgres
 - **Deployment:** Vercel
